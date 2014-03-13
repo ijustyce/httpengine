@@ -19,20 +19,20 @@ import android.content.Context;
  * 
  */
 public class GMHttpRequest {
-	public static final Long					REQUEST_ID_UNIQUE	= 0xFFFFFFFFl;
+	public static final Long REQUEST_ID_UNIQUE = 0xFFFFFFFFl;
 
-	private final Context						context;
-	private String								uri;
-	private Map<String, Object>					userData;
-	private final Map<String, String>			headers;
-	private String								taskId;
-	private GMHttpParameters					httpParameters;
-	private Boolean								isRawData;
-	private String								method;
-	private WeakReference<OnResponseListener>	onResponseListener;
-	private OnProgressUpdateListener			onProgressUpdateListener;
-	private HttpRequestParser					requestParser;
-	private Boolean								isCanceled;
+	private final Context context;
+	private String uri;
+	private Map<String, Object> userData;
+	private final Map<String, String> headers;
+	private String taskId;
+	private GMHttpParameters httpParameters;
+	private Boolean isRawData;
+	private String method;
+	private WeakReference<OnResponseListener> onResponseListener;
+	private OnProgressUpdateListener onProgressUpdateListener;
+	private HttpRequestParser requestParser;
+	private Boolean isCanceled;
 
 	public GMHttpRequest(Context context) {
 		this.context = context;

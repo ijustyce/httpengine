@@ -6,7 +6,7 @@ import java.util.TreeMap;
 import org.apache.http.params.HttpParams;
 
 public class GMHttpParameters implements HttpParams {
-	private final TreeMap<String, Object>	httpParams;
+	private final TreeMap<String, Object> httpParams;
 
 	public GMHttpParameters() {
 		httpParams = new TreeMap<String, Object>();

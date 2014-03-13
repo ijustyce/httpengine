@@ -8,32 +8,33 @@ import org.json.JSONObject;
 
 /***
  * Http response get from GMHttpEngine request
+ * 
  * @author Gemini
- *
+ * 
  */
 public class GMHttpResponse {
-	
+
 	private byte[] rawData;
 	private HttpResponseParser responseParser;
-	
+
 	private boolean isFail = false;
-	
+
 	public GMHttpResponse(byte[] data) {
-		if( data != null ) {
+		if (data != null) {
 			this.rawData = data;
 		} else {
 			isFail = true;
 		}
-		
+
 	}
-	
-	public byte[] getRawData( ) {
-		if( isFail ) {
+
+	public byte[] getRawData() {
+		if (isFail) {
 			throw new RuntimeException("Request is failed");
 		}
 		return this.rawData;
 	}
-	
+
 	public HttpResponseParser getResponseParser() {
 		return responseParser;
 	}
@@ -45,10 +46,10 @@ public class GMHttpResponse {
 	public String parseAsString() {
 		return parseAsString("UTF-8");
 	}
-	
+
 	public String parseAsString(String encode) {
 		String ret = null;
-		if( isFail ) {
+		if (isFail) {
 			throw new RuntimeException("Request is failed");
 		}
 		try {
@@ -59,7 +60,7 @@ public class GMHttpResponse {
 		}
 		return ret;
 	}
-	
+
 	public JSONObject parseAsJSON() {
 		String result = parseAsString();
 		JSONObject obj = null;
@@ -71,9 +72,9 @@ public class GMHttpResponse {
 		}
 		return obj;
 	}
-	
+
 	public Object parseData() {
-		if( isFail ) {
+		if (isFail) {
 			throw new RuntimeException("Request is failed");
 		}
 		return responseParser.handleResponse(this.rawData);

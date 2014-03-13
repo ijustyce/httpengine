@@ -24,35 +24,36 @@ import android.os.Message;
 
 public class GMHttpService {
 
-	private static final int CORE_POOL_SIZE		= 3;
-	private static final int MAXIMUM_POOL_SIZE	= 128;
-	private static final int KEEP_ALIVE			= 1;
+	private static final int CORE_POOL_SIZE = 3;
+	private static final int MAXIMUM_POOL_SIZE = 128;
+	private static final int KEEP_ALIVE = 1;
 
 	private static final ThreadFactory sThreadFactory = new ThreadFactory() {
-		private final AtomicInteger	mCount	= new AtomicInteger(1);
+		private final AtomicInteger mCount = new AtomicInteger(1);
 
 		@Override
 		public Thread newThread(Runnable r) {
-			return new Thread(r,"AsyncTask #"+ mCount.getAndIncrement());
+			return new Thread(r, "AsyncTask #" + mCount.getAndIncrement());
 		}
 	};
 
-	private static final BlockingQueue<Runnable>			sPoolWorkQueue		= new LinkedBlockingQueue<Runnable>(10);
+	private static final BlockingQueue<Runnable> sPoolWorkQueue = new LinkedBlockingQueue<Runnable>(
+			10);
 
-	public static final String								TAG					= "GMHttpService";
-	public static final String								VERSION				= "1.2";
+	public static final String TAG = "GMHttpService";
+	public static final String VERSION = "1.2";
 
-	private static GMHttpService							sInstance;
-	private final WeakHashMap<Context, List<GMHttpRequest>>	requestMap;
+	private static GMHttpService sInstance;
+	private final WeakHashMap<Context, List<GMHttpRequest>> requestMap;
 
 	/***
 	 * per thread has a {@link GMHttpEngine}
 	 */
-	private final ThreadLocal<GMHttpEngine>					sHttpEnginePool		= new ThreadLocal<GMHttpEngine>();
+	private final ThreadLocal<GMHttpEngine> sHttpEnginePool = new ThreadLocal<GMHttpEngine>();
 
-	private final Executor									mService;
+	private final Executor mService;
 
-	private final Handler.Callback							mResponseCallBack;
+	private final Handler.Callback mResponseCallBack;
 
 	public static void enableCache(Context context) throws IOException {
 		File httpCacheDir = new File(context.getCacheDir(), "http");
@@ -70,12 +71,12 @@ public class GMHttpService {
 	/**
 	 * default thread that handler run on
 	 */
-	private final HandlerThread	mHandlerThread;
-	private Handler				mCallbackHandler;
+	private final HandlerThread mHandlerThread;
+	private Handler mCallbackHandler;
 
 	private GMHttpService() {
-		mService = new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE,
-                TimeUnit.SECONDS, sPoolWorkQueue, sThreadFactory);// Executors.newCachedThreadPool();
+		mService = new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE,
+				KEEP_ALIVE, TimeUnit.SECONDS, sPoolWorkQueue, sThreadFactory);// Executors.newCachedThreadPool();
 		mResponseCallBack = new ResponseDataCallback();
 		requestMap = new WeakHashMap<Context, List<GMHttpRequest>>();
 
@@ -132,8 +133,8 @@ public class GMHttpService {
 
 	private class HttpRunnable implements Runnable, ResponseUpdater {
 
-		private final GMHttpRequest	mHttpRequest;
-		private GMHttpResponse		mHttpResponse;
+		private final GMHttpRequest mHttpRequest;
+		private GMHttpResponse mHttpResponse;
 
 		public HttpRunnable(GMHttpRequest httpRequest) {
 			mHttpRequest = httpRequest;

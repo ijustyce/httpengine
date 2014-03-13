@@ -28,7 +28,8 @@ public class GMNetStateManager {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			sContext = context;
-			if (ConnectivityManager.CONNECTIVITY_ACTION.equals(intent.getAction())) {
+			if (ConnectivityManager.CONNECTIVITY_ACTION.equals(intent
+					.getAction())) {
 				WifiManager wifiManager = (WifiManager) context
 						.getSystemService(Context.WIFI_SERVICE);
 				WifiInfo info = wifiManager.getConnectionInfo();
@@ -45,7 +46,8 @@ public class GMNetStateManager {
 		Uri uri = Uri.parse("content://telephony/carriers/preferapn");
 		Cursor cursor = null;
 		if (null != sContext) {
-			cursor = sContext.getContentResolver().query(uri, null, null, null, null);
+			cursor = sContext.getContentResolver().query(uri, null, null, null,
+					null);
 		}
 		if (cursor != null && cursor.moveToFirst()) {
 			String proxyStr = cursor.getString(cursor.getColumnIndex("proxy"));

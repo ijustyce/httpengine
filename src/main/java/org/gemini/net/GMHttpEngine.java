@@ -26,13 +26,13 @@ import android.util.Log;
  * 
  */
 public class GMHttpEngine {
-	public static String		TAG					= "GSHttpEngine";
+	public static String TAG = "GSHttpEngine";
 
-	public static final String	HTTP_GET			= "GET";
-	public static final String	HTTP_POST			= "POST";
+	public static final String HTTP_GET = "GET";
+	public static final String HTTP_POST = "POST";
 
-	public static int			CONNECTION_TIME_OUT	= 5000;
-	public static int			READ_TIME_OUT		= 30000;
+	public static int CONNECTION_TIME_OUT = 5000;
+	public static int READ_TIME_OUT = 30000;
 
 	public GMHttpEngine() {
 		HttpURLConnection.setFollowRedirects(true);
@@ -68,7 +68,7 @@ public class GMHttpEngine {
 				connection.addRequestProperty("Content-Type", contentType);
 				httpEntity = httpRequest.getHttpEntity();
 			}
-			Log.d(TAG,uri);
+			Log.d(TAG, uri);
 
 			if (headers != null) {
 				for (Entry<String, String> e : headers.entrySet()) {
@@ -114,8 +114,8 @@ public class GMHttpEngine {
 		return resultData;
 	}
 
-	ByteArrayOutputStream	buffer		= new ByteArrayOutputStream();
-	byte[]					bufferData	= new byte[1024];
+	ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+	byte[] bufferData = new byte[1024];
 
 	private byte[] readHttpResponseAsByte(InputStream is, int length,
 			OnProgressUpdateListener l) {
@@ -158,7 +158,8 @@ public class GMHttpEngine {
 				} else {
 					sb.append("&");
 				}
-				sb.append(URLEncoder.encode(key, "utf-8") + "=" + URLEncoder.encode(value, "utf-8"));
+				sb.append(URLEncoder.encode(key, "utf-8") + "="
+						+ URLEncoder.encode(value, "utf-8"));
 			}
 		}
 		return sb.toString();
