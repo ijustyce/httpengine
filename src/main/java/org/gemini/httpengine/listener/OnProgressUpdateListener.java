@@ -1,4 +1,4 @@
-package org.gemini.listener;
+package org.gemini.httpengine.listener;
 
 public interface OnProgressUpdateListener {
 	/***

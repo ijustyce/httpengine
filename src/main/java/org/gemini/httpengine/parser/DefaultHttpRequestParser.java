@@ -1,4 +1,4 @@
-package org.gemini.parser;
+package org.gemini.httpengine.parser;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,7 +9,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.message.BasicNameValuePair;
-import org.gemini.net.GMHttpParameters;
+import org.gemini.httpengine.net.GMHttpParameters;
 
 public class DefaultHttpRequestParser implements HttpRequestParser {
 

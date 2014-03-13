@@ -1,8 +1,8 @@
-package org.gemini.net;
+package org.gemini.httpengine.net;
 
 import java.io.UnsupportedEncodingException;
 
-import org.gemini.parser.HttpResponseParser;
+import org.gemini.httpengine.parser.HttpResponseParser;
 import org.json.JSONException;
 import org.json.JSONObject;
 

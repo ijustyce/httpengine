@@ -1,14 +1,14 @@
-package org.gemini.net;
+package org.gemini.httpengine.net;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gemini.listener.OnProgressUpdateListener;
-import org.gemini.listener.OnResponseListener;
-import org.gemini.parser.DefaultHttpRequestParser;
-import org.gemini.parser.HttpRequestParser;
+import org.gemini.httpengine.listener.OnProgressUpdateListener;
+import org.gemini.httpengine.listener.OnResponseListener;
+import org.gemini.httpengine.parser.DefaultHttpRequestParser;
+import org.gemini.httpengine.parser.HttpRequestParser;
 
 import android.content.Context;
 

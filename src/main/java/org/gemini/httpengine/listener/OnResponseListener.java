@@ -1,7 +1,7 @@
-package org.gemini.listener;
+package org.gemini.httpengine.listener;
 
-import org.gemini.net.GMHttpRequest;
-import org.gemini.net.GMHttpResponse;
+import org.gemini.httpengine.net.GMHttpRequest;
+import org.gemini.httpengine.net.GMHttpResponse;
 
 public interface OnResponseListener {
 

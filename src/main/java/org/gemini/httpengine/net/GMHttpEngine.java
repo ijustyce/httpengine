@@ -1,4 +1,4 @@
-package org.gemini.net;
+package org.gemini.httpengine.net;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -14,8 +14,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.zip.GZIPInputStream;
 
-import org.gemini.listener.OnProgressUpdateListener;
-import org.gemini.util.LOG;
+import org.gemini.httpengine.listener.OnProgressUpdateListener;
+import org.gemini.httpengine.util.LOG;
 
 import android.util.Log;
 

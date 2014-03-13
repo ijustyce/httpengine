@@ -1,4 +1,4 @@
-package org.gemini.net;
+package org.gemini.httpengine.net;
 
 import java.util.Set;
 import java.util.TreeMap;
