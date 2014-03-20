@@ -33,6 +33,8 @@ public class GMHttpRequest {
 	private OnProgressUpdateListener onProgressUpdateListener;
 	private HttpRequestParser requestParser;
 	private Boolean isCanceled;
+	
+	private Boolean failed = false;
 
 	public GMHttpRequest(Context context) {
 		this.context = context;
@@ -151,5 +153,14 @@ public class GMHttpRequest {
 	public Boolean isCancel() {
 		return this.isCanceled;
 	}
-
+	
+	public Boolean isFailed(){
+		
+		return failed;
+	}
+	
+	protected void setFailed(boolean value){
+		
+		failed = value;
+	}
 }

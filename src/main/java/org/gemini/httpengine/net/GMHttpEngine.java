@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -93,12 +94,11 @@ public class GMHttpEngine {
 			connection.setConnectTimeout(CONNECTION_TIME_OUT);
 			connection.setReadTimeout(READ_TIME_OUT);
 			connection.connect();
-			int responseCode = connection.getResponseCode();
 			InputStream responseStream = connection.getInputStream();
 			int length = connection.getContentLength();
 			String contentEncoding = connection.getContentEncoding();
 			if (contentEncoding != null
-					&& contentEncoding.toLowerCase().equals("gzip")) {
+					&& contentEncoding.toLowerCase(Locale.ENGLISH).equals("gzip")) {
 				responseStream = new GZIPInputStream(responseStream);
 			}
 
@@ -107,6 +107,9 @@ public class GMHttpEngine {
 
 		} catch (IOException e) {
 			LOG.w(TAG, e.getClass().getSimpleName(), e);
+			
+			//  failed
+			httpRequest.setFailed(true);
 		} finally {
 			connection.disconnect();
 		}

@@ -47,7 +47,7 @@ public class GMHttpResponse {
 		return parseAsString("UTF-8");
 	}
 
-	public String parseAsString(String encode) {
+	private String parseAsString(String encode) {
 		String ret = null;
 		if (isFail) {
 			throw new RuntimeException("Request is failed");

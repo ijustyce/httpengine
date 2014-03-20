@@ -74,7 +74,7 @@ public class GMHttpService {
 	private final HandlerThread mHandlerThread;
 	private Handler mCallbackHandler;
 
-	private GMHttpService() {
+	public GMHttpService() {
 		mService = new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE,
 				KEEP_ALIVE, TimeUnit.SECONDS, sPoolWorkQueue, sThreadFactory);// Executors.newCachedThreadPool();
 		mResponseCallBack = new ResponseDataCallback();
@@ -190,7 +190,7 @@ public class GMHttpService {
 		} else {
 			httpRequestList.add(httpRequest);
 		}
-		mService.execute(runnable);
+		mService.execute(runnable);	
 	}
 
 	/***

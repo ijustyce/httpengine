@@ -138,6 +138,11 @@ public class GMHttpParameters implements HttpParams {
 		httpParams.put(name, value);
 		return this;
 	}
+	
+	public HttpParams setStringParameter(String name, String value) {
+		httpParams.put(name, value);
+		return this;
+	}
 
 	@Override
 	public HttpParams setParameter(String name, Object value) {
